@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import Image from 'next/image';
 import QRCode from 'qrcode';
 
 interface QRCodeGeneratorProps {
@@ -440,7 +439,7 @@ export default function QRCodeGenerator({
                 💖
               </div>
 
-              <Image
+              <img
                 src={qrCodeDataUrl}
                 alt="Generated QR Code"
                 width={300}

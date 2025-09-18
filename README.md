@@ -10,6 +10,7 @@
 ## ✨ 주요 기능
 
 ### 🎯 다양한 QR코드 타입 지원
+
 - **📝 텍스트**: 일반 텍스트를 QR코드로 변환
 - **🌐 URL**: 웹사이트 링크를 QR코드로 생성
 - **📶 WiFi**: WiFi 접속 정보를 QR코드로 만들기
@@ -19,6 +20,7 @@
 - **📞 전화**: 전화 걸기용 QR코드
 
 ### 🎨 카와이한 디자인
+
 - 핑크-퍼플 그라데이션 배경
 - 움직이는 이모지 애니메이션
 - 둥근 모서리와 그림자 효과
@@ -26,6 +28,7 @@
 - 완전 반응형 디자인
 
 ### 🚀 SEO 최적화
+
 - 완벽한 메타데이터 설정
 - 구조화된 데이터 (JSON-LD)
 - 자동 생성 사이트맵
@@ -33,6 +36,7 @@
 - 소셜 미디어 공유 최적화
 
 ### 💰 수익화 준비
+
 - Google AdSense 통합 준비
 - 광고 배치 영역 구성
 - 콘텐츠 마케팅 기반 구축
@@ -49,17 +53,20 @@
 ## 🚀 시작하기
 
 ### 1. 저장소 클론
+
 ```bash
 git clone https://github.com/sung-eunji/qrcode-generator.git
 cd qrcode-generator
 ```
 
 ### 2. 의존성 설치
+
 ```bash
 npm install
 ```
 
 ### 3. 개발 서버 실행
+
 ```bash
 npm run dev
 ```
@@ -67,6 +74,7 @@ npm run dev
 브라우저에서 [http://localhost:3000](http://localhost:3000)을 열어 확인하세요!
 
 ### 4. 프로덕션 빌드
+
 ```bash
 npm run build
 npm start
@@ -82,11 +90,13 @@ npm start
 ## 🌐 배포
 
 ### Vercel 배포 (권장)
+
 1. [Vercel](https://vercel.com)에 가입
 2. GitHub 저장소 연결
 3. 자동 배포 설정
 
 ### 환경 변수 설정
+
 ```bash
 # Google Analytics
 NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
@@ -101,30 +111,36 @@ NEXT_PUBLIC_SITE_URL=https://your-domain.com
 ## 📊 SEO 최적화 가이드
 
 ### 1. 도메인 설정
+
 - 도메인 구매 후 `NEXT_PUBLIC_SITE_URL` 설정
 - Google Search Console 등록
 
 ### 2. Analytics 설정
+
 - Google Analytics 계정 생성
 - `NEXT_PUBLIC_GA_MEASUREMENT_ID` 설정
 
 ### 3. AdSense 승인
+
 - Google AdSense 계정 생성
 - 사이트 승인 후 `NEXT_PUBLIC_ADSENSE_CLIENT_ID` 설정
 
 ## 🎯 수익화 전략
 
 ### 광고 수익
+
 - Google AdSense 통합
 - 상단, 사이드바, 하단 광고 배치
 - 콘텐츠 관련 광고 타겟팅
 
 ### 콘텐츠 마케팅
+
 - 주 2-3회 블로그 포스트 업데이트
 - QR코드 활용법 및 팁 공유
 - SEO 친화적 콘텐츠 작성
 
 ### 소셜 미디어
+
 - 인스타그램, 페이스북 마케팅
 - QR코드 활용 사례 공유
 - 커뮤니티 구축

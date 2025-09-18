@@ -20,7 +20,7 @@ export default function AdBanner({
   useEffect(() => {
     try {
       // Google AdSense 스크립트 로드 (실제 광고를 위해서는 AdSense 승인 후 발급받은 클라이언트 ID 필요)
-      if (typeof window !== 'undefined' && !(window as any).adsbygoogle) {
+      if (typeof window !== 'undefined' && !(window as unknown as { adsbygoogle?: unknown }).adsbygoogle) {
         const script = document.createElement('script');
         script.async = true;
         script.src =
@@ -30,9 +30,9 @@ export default function AdBanner({
 
         script.onload = () => {
           try {
-            ((window as any).adsbygoogle =
-              (window as any).adsbygoogle || []).push({});
-          } catch (e) {
+            const windowWithAdsense = window as unknown as { adsbygoogle: unknown[] };
+            (windowWithAdsense.adsbygoogle = windowWithAdsense.adsbygoogle || []).push({});
+          } catch {
             console.log('AdSense not loaded yet');
           }
         };

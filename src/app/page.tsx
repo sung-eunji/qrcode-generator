@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import QRCodeGenerator from '@/components/QRCodeGenerator';
 import AdBanner from '@/components/AdBanner';
 
@@ -24,24 +25,24 @@ export default function Home() {
         {/* 네비게이션 */}
         <nav className="mb-8 text-center">
           <div className="inline-flex bg-white/80 backdrop-blur-sm rounded-2xl p-2 border-4 border-pink-200 shadow-lg">
-            <a
-              href="/"
+            <Link 
+              href="/" 
               className="px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-xl font-medium transition-all duration-300 transform hover:scale-105"
             >
               🏠 홈
-            </a>
-            <a
-              href="/blog"
+            </Link>
+            <Link 
+              href="/blog" 
               className="px-6 py-3 text-purple-700 hover:bg-pink-100 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 mx-1"
             >
               📚 블로그
-            </a>
-            <a
-              href="/faq"
+            </Link>
+            <Link 
+              href="/faq" 
               className="px-6 py-3 text-purple-700 hover:bg-pink-100 rounded-xl font-medium transition-all duration-300 transform hover:scale-105"
             >
               ❓ FAQ
-            </a>
+            </Link>
           </div>
         </nav>
 
