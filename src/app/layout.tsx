@@ -13,25 +13,30 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://your-domain.com'),
-  title: '무료 QR코드 생성기 - 온라인 QR코드 만들기 | QRCode Generator',
+  metadataBase: new URL('https://kawaii-utils.com'),
+  title: 'Kawaii Utils - 무료 온라인 도구 모음집 | QR코드, 변환기, 개발자 도구',
   description:
-    '무료로 QR코드를 생성하세요! URL, 텍스트, 연락처, WiFi 등 다양한 형태의 QR코드를 쉽고 빠르게 만들 수 있습니다. 광고 없이 완전 무료 QR코드 생성기.',
+    '귀여운 무료 온라인 도구 모음집! QR코드 생성기, 시간대 변환기, 환율 변환기, 단위 변환기, Base64 인코더, 해시 생성기 등 다양한 유틸리티를 무료로 사용하세요.',
   keywords: [
-    'QR코드 생성',
-    '무료 QR코드',
-    'QR코드 만들기',
-    '온라인 QR코드',
+    '무료 온라인 도구',
     'QR코드 생성기',
-    'QR Generator',
-    'QR Code Maker',
-    '무료 QR코드 생성기',
-    'QR코드 온라인',
-    'QR코드 다운로드',
+    '시간대 변환기',
+    '환율 변환기',
+    '단위 변환기',
+    'Base64 인코더',
+    '해시 생성기',
+    'JSON 포맷터',
+    '색상 선택기',
+    '랜덤 생성기',
+    '날짜 계산기',
+    '온라인 유틸리티',
+    '개발자 도구',
+    '무료 도구',
+    'Kawaii Utils',
   ],
-  authors: [{ name: 'QRCode Generator' }],
-  creator: 'QRCode Generator',
-  publisher: 'QRCode Generator',
+  authors: [{ name: 'Kawaii Utils' }],
+  creator: 'Kawaii Utils',
+  publisher: 'Kawaii Utils',
   robots: {
     index: true,
     follow: true,
@@ -46,29 +51,29 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'ko_KR',
-    url: 'https://your-domain.com',
-    title: '무료 QR코드 생성기 - 온라인 QR코드 만들기',
+    url: 'https://kawaii-utils.com',
+    title: 'Kawaii Utils - 무료 온라인 도구 모음집',
     description:
-      '무료로 QR코드를 생성하세요! URL, 텍스트, 연락처, WiFi 등 다양한 형태의 QR코드를 쉽고 빠르게 만들 수 있습니다.',
-    siteName: 'QRCode Generator',
+      '귀여운 무료 온라인 도구 모음집! QR코드 생성기, 시간대 변환기, 환율 변환기, 단위 변환기, Base64 인코더, 해시 생성기 등 다양한 유틸리티를 무료로 사용하세요.',
+    siteName: 'Kawaii Utils',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: '무료 QR코드 생성기',
+        alt: 'Kawaii Utils - 무료 온라인 도구 모음집',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: '무료 QR코드 생성기 - 온라인 QR코드 만들기',
+    title: 'Kawaii Utils - 무료 온라인 도구 모음집',
     description:
-      '무료로 QR코드를 생성하세요! URL, 텍스트, 연락처, WiFi 등 다양한 형태의 QR코드를 쉽고 빠르게 만들 수 있습니다.',
+      '귀여운 무료 온라인 도구 모음집! QR코드 생성기, 시간대 변환기, 환율 변환기, 단위 변환기, Base64 인코더, 해시 생성기 등 다양한 유틸리티를 무료로 사용하세요.',
     images: ['/og-image.png'],
   },
   alternates: {
-    canonical: 'https://your-domain.com',
+    canonical: 'https://kawaii-utils.com',
   },
   verification: {
     google: 'your-google-verification-code',
@@ -76,7 +81,8 @@ export const metadata: Metadata = {
     yahoo: 'your-yahoo-verification-code',
   },
   category: 'technology',
-  classification: 'QR Code Generator, Online Tool, Free Service',
+  classification:
+    'Online Utilities, QR Code Generator, Converter Tools, Developer Tools, Free Service',
 };
 
 export default function RootLayout({
@@ -87,10 +93,10 @@ export default function RootLayout({
   const structuredData = {
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
-    name: '무료 QR코드 생성기',
+    name: 'Kawaii Utils - 무료 온라인 도구 모음집',
     description:
-      '무료로 QR코드를 생성하세요! URL, 텍스트, 연락처, WiFi 등 다양한 형태의 QR코드를 쉽고 빠르게 만들 수 있습니다.',
-    url: 'https://your-domain.com',
+      '귀여운 무료 온라인 도구 모음집! QR코드 생성기, 시간대 변환기, 환율 변환기, 단위 변환기, Base64 인코더, 해시 생성기 등 다양한 유틸리티를 무료로 사용하세요.',
+    url: 'https://kawaii-utils.com',
     applicationCategory: 'UtilityApplication',
     operatingSystem: 'Web Browser',
     offers: {
@@ -99,10 +105,18 @@ export default function RootLayout({
       priceCurrency: 'KRW',
     },
     featureList: [
-      '무료 QR코드 생성',
-      '다양한 QR코드 타입 지원',
-      '고해상도 다운로드',
+      '무료 QR코드 생성기',
+      '시간대 변환기',
+      '환율 변환기',
+      '단위 변환기',
+      'Base64 인코더',
+      '해시 생성기',
+      'JSON 포맷터',
+      '색상 선택기',
+      '랜덤 생성기',
+      '날짜 계산기',
       '모바일 최적화',
+      '완전 무료',
     ],
   };
 

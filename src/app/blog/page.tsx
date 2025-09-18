@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'QR코드 활용법 및 팁 - QR코드 블로그 | QRCode Generator',
@@ -51,6 +52,17 @@ export default function BlogPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-100 via-purple-50 to-pink-200 py-8 px-4">
       <div className="container mx-auto max-w-4xl">
+        {/* 뒤로가기 버튼 */}
+        <div className="mb-6">
+          <Link 
+            href="/"
+            className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white rounded-2xl font-medium transition-all duration-300 transform hover:scale-105 shadow-lg"
+          >
+            <span className="text-lg mr-2">⬅️</span>
+            홈으로 돌아가기
+          </Link>
+        </div>
+
         {/* 헤더 */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold bg-gradient-to-r from-pink-500 via-purple-500 to-pink-600 bg-clip-text text-transparent mb-4">

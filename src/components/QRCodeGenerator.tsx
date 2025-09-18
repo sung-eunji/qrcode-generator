@@ -52,6 +52,14 @@ export default function QRCodeGenerator({
 
       switch (qrType) {
         case 'text':
+          if (!text.trim()) {
+            setError('텍스트나 URL을 입력해주세요.');
+            return;
+          }
+          // 텍스트 메시지인 경우 메시지 표시 페이지로 연결
+          const encodedMessage = encodeURIComponent(text);
+          qrContent = `${window.location.origin}/message/${encodedMessage}`;
+          break;
         case 'url':
           if (!text.trim()) {
             setError('텍스트나 URL을 입력해주세요.');

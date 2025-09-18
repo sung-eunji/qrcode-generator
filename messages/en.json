@@ -1,0 +1,182 @@
+{
+  "metadata": {
+    "title": "Kawaii Utils - Free Online Tools Collection | QR Code, Converters, Developer Tools",
+    "description": "Cute free online tools collection! QR code generator, timezone converter, currency converter, unit converter, Base64 encoder, hash generator and more utilities for free.",
+    "keywords": "free online tools, QR code generator, timezone converter, currency converter, unit converter, Base64 encoder, hash generator, JSON formatter, color picker, random generator, date calculator, online utilities, developer tools, free tools, Kawaii Utils"
+  },
+  "navigation": {
+    "home": "🏠 Home",
+    "blog": "📚 Blog",
+    "faq": "❓ FAQ"
+  },
+  "home": {
+    "title": "Kawaii Utils",
+    "subtitle": "Cute free online tools collection! From QR codes to converters 🎀",
+    "allTools": "🛠️ All Tools Collection 💕",
+    "whyChoose": "🌟 Why Choose Kawaii Utils? 💖",
+    "features": {
+      "free": {
+        "title": "Completely Free",
+        "description": "Use all tools for free!"
+      },
+      "mobile": {
+        "title": "Mobile Optimized",
+        "description": "Use conveniently anywhere!"
+      },
+      "fast": {
+        "title": "Fast Speed",
+        "description": "Get results instantly!"
+      }
+    }
+  },
+  "qrGenerator": {
+    "title": "🎀 Kawaii QR Code Generator ✨",
+    "selectType": "🎯 Please select QR code type! 💕",
+    "types": {
+      "text": "📝 Text",
+      "url": "🌐 URL",
+      "wifi": "📶 WiFi",
+      "contact": "👤 Contact",
+      "sms": "💬 SMS",
+      "email": "📧 Email",
+      "phone": "📞 Phone"
+    },
+    "inputs": {
+      "text": "✨ Enter text or URL",
+      "url": "✨ Enter URL",
+      "wifi": "✨ Enter WiFi information",
+      "contact": "✨ Enter contact information",
+      "sms": "✨ Enter phone number",
+      "email": "✨ Enter email address",
+      "phone": "✨ Enter phone number"
+    },
+    "placeholders": {
+      "text": "e.g.: https://example.com or Hello! 🎀",
+      "url": "https://example.com 🌸",
+      "sms": "010-1234-5678 💕",
+      "email": "example@email.com ✨",
+      "phone": "010-1234-5678 📞"
+    },
+    "wifi": {
+      "ssid": "📶 Network Name (SSID)",
+      "password": "🔐 Password",
+      "security": "🛡️ Security Type",
+      "ssidPlaceholder": "Enter WiFi network name! ✨",
+      "passwordPlaceholder": "Enter WiFi password! 💖",
+      "securityOptions": {
+        "WPA": "WPA/WPA2 🔒",
+        "WEP": "WEP 🔓",
+        "nopass": "No Password 🆓"
+      }
+    },
+    "contact": {
+      "name": "👤 Name *",
+      "phone": "📞 Phone",
+      "email": "📧 Email",
+      "organization": "🏢 Company/Organization",
+      "namePlaceholder": "Enter name! ✨",
+      "phonePlaceholder": "010-1234-5678 💕",
+      "emailPlaceholder": "example@email.com 🌸",
+      "organizationPlaceholder": "Enter company or organization name! 🎀"
+    },
+    "buttons": {
+      "generate": "✨ Generate QR Code!",
+      "generating": "⏳ Generating...",
+      "download": "💾 Download",
+      "clear": "🔄 Clear"
+    },
+    "errors": {
+      "textRequired": "Please enter text or URL.",
+      "wifiRequired": "Please enter WiFi network name.",
+      "nameRequired": "Please enter name.",
+      "phoneRequired": "Please enter phone number.",
+      "emailRequired": "Please enter email address.",
+      "generateError": "An error occurred while generating QR code.",
+      "unsupportedType": "Unsupported QR code type."
+    },
+    "result": {
+      "type": "🎯 Generated QR code type:",
+      "content": "📝 Content:",
+      "network": "📶 Network:",
+      "name": "👤 Name:"
+    }
+  },
+  "tools": {
+    "categories": {
+      "qr": {
+        "title": "QR Code Tools",
+        "tools": {
+          "generator": {
+            "name": "QR Code Generator",
+            "description": "Generate various types of QR codes"
+          },
+          "analyzer": {
+            "name": "QR Code Analyzer",
+            "description": "Analyze QR code content"
+          },
+          "customizer": {
+            "name": "QR Code Customizer",
+            "description": "Insert logo, change colors"
+          }
+        }
+      },
+      "converter": {
+        "title": "Converters",
+        "tools": {
+          "timezone": {
+            "name": "Timezone Converter",
+            "description": "World time conversion"
+          },
+          "currency": {
+            "name": "Currency Converter",
+            "description": "Real-time exchange rate calculation"
+          },
+          "unit": {
+            "name": "Unit Converter",
+            "description": "Length, weight, temperature, etc."
+          }
+        }
+      },
+      "developer": {
+        "title": "Developer Tools",
+        "tools": {
+          "base64": {
+            "name": "Base64 Encoder",
+            "description": "Base64 encoding/decoding"
+          },
+          "hash": {
+            "name": "Hash Generator",
+            "description": "MD5, SHA256 hash"
+          },
+          "json": {
+            "name": "JSON Formatter",
+            "description": "JSON sorting and validation"
+          }
+        }
+      },
+      "daily": {
+        "title": "Daily Tools",
+        "tools": {
+          "color": {
+            "name": "Color Picker",
+            "description": "HEX, RGB color conversion"
+          },
+          "random": {
+            "name": "Random Generator",
+            "description": "Numbers, colors, passwords"
+          },
+          "date": {
+            "name": "Date Calculator",
+            "description": "Date difference, day calculation"
+          }
+        }
+      }
+    },
+    "comingSoon": "Coming Soon ✨",
+    "useNow": "Use Now"
+  },
+  "language": {
+    "switch": "Switch Language",
+    "current": "Current Language"
+  }
+}
