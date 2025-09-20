@@ -63,7 +63,7 @@ const randomMessages = {
     'Stay healthy and happy always! 🌸',
     'Your efforts will shine! ⭐',
     'Have an amazing day today! 🦄',
-    'I\'m cheering for you! Go for it! 🎉',
+    "I'm cheering for you! Go for it! 🎉",
     'Have a day full of love and happiness! 💝',
     'Your warm heart touches everyone! 🌺',
     'Have a day full of laughter! 😊',
@@ -81,12 +81,12 @@ const randomMessages = {
     'Vos efforts brilleront! ⭐',
     'Passez une journée incroyable! 🦄',
     'Je vous encourage! Allez-y! 🎉',
-    'Passez une journée pleine d\'amour et de bonheur! 💝',
+    "Passez une journée pleine d'amour et de bonheur! 💝",
     'Votre cœur chaleureux touche tout le monde! 🌺',
     'Passez une journée pleine de rires! 😊',
     'Votre énergie positive est merveilleuse! ⚡',
     'Tout se passera parfaitement bien! 🍀',
-  ]
+  ],
 };
 
 export default function QRCodeGenerator({
@@ -318,7 +318,9 @@ export default function QRCodeGenerator({
   };
 
   const generateRandomMessage = () => {
-    const messages = randomMessages[locale as keyof typeof randomMessages] || randomMessages.ko;
+    const messages =
+      randomMessages[locale as keyof typeof randomMessages] ||
+      randomMessages.ko;
     const randomIndex = Math.floor(Math.random() * messages.length);
     const randomMessage = messages[randomIndex];
     setText(randomMessage);
