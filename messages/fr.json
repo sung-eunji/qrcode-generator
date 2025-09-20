@@ -1,0 +1,87 @@
+{
+  "common": {
+    "home": "🏠 Accueil",
+    "blog": "📚 Blog",
+    "faq": "❓ FAQ",
+    "use": "Utiliser",
+    "comingSoon": "Bientôt ✨"
+  },
+  "home": {
+    "title": "Kawaii Utils",
+    "subtitle": "Collection d'outils en ligne gratuits et mignons ! Des QR codes aux convertisseurs 🎀",
+    "allTools": "Collection de Tous les Outils 💕",
+    "whyChoose": "Pourquoi choisir Kawaii Utils ? 💖",
+    "completelyFree": "Complètement Gratuit",
+    "completelyFreeDesc": "Utilisez tous les outils gratuitement !",
+    "mobileOptimized": "Optimisé Mobile",
+    "mobileOptimizedDesc": "Utilisez commodément n'importe où !",
+    "fastSpeed": "Vitesse Rapide",
+    "fastSpeedDesc": "Vérifiez les résultats instantanément !"
+  },
+  "categories": {
+    "qrTools": "Outils QR Code",
+    "converters": "Convertisseurs",
+    "devTools": "Outils Développeur",
+    "dailyTools": "Outils Quotidiens"
+  },
+  "qrTools": {
+    "generator": "Générateur QR Code",
+    "generatorDesc": "Générer différents types de QR codes",
+    "analyzer": "Analyseur QR Code",
+    "analyzerDesc": "Analyser le contenu du QR code",
+    "customizer": "Personnalisateur QR Code",
+    "customizerDesc": "Insérer logos, changer couleurs"
+  },
+  "converters": {
+    "timezone": "Convertisseur Fuseau Horaire",
+    "timezoneDesc": "Conversion d'heure mondiale",
+    "currency": "Convertisseur de Devise",
+    "currencyDesc": "Calcul de taux de change en temps réel",
+    "unit": "Convertisseur d'Unités",
+    "unitDesc": "Longueur, poids, température, etc."
+  },
+  "devTools": {
+    "base64": "Encodeur Base64",
+    "base64Desc": "Encodage/décodage Base64",
+    "hash": "Générateur de Hachage",
+    "hashDesc": "Hachage MD5, SHA256",
+    "json": "Formateur JSON",
+    "jsonDesc": "Tri et validation JSON"
+  },
+  "dailyTools": {
+    "color": "Sélecteur de Couleur",
+    "colorDesc": "Conversion couleur HEX, RGB",
+    "random": "Générateur Aléatoire",
+    "randomDesc": "Nombres, couleurs, mots de passe",
+    "date": "Calculateur de Date",
+    "dateDesc": "Différence de date, calcul de jour"
+  },
+  "qrGenerator": {
+    "title": "Générateur QR Code ✨",
+    "subtitle": "Créez de beaux QR codes instantanément !",
+    "inputLabel": "Entrez du texte ou une URL",
+    "inputPlaceholder": "Tapez votre message ici...",
+    "generateButton": "Générer QR Code 🎀",
+    "downloadButton": "Télécharger QR Code 💖",
+    "copyButton": "Copier QR Code 📋",
+    "shareButton": "Partager QR Code 📤",
+    "previewTitle": "Aperçu QR Code",
+    "customizeTitle": "Personnaliser QR Code",
+    "sizeLabel": "Taille",
+    "errorCorrectionLabel": "Correction d'Erreur",
+    "marginLabel": "Marge",
+    "colorLabel": "Couleur",
+    "backgroundColorLabel": "Couleur d'Arrière-plan",
+    "logoLabel": "Logo",
+    "logoPlaceholder": "Télécharger logo (optionnel)",
+    "successMessage": "QR code généré avec succès ! ✨",
+    "errorMessage": "Veuillez entrer du texte pour générer un QR code",
+    "downloadSuccess": "QR code téléchargé avec succès ! 💖"
+  },
+  "message": {
+    "title": "Message spécial arrivé !",
+    "subtitle": "Ce message a été livré via QR code !",
+    "backHome": "🏠 Retour à l'Accueil",
+    "createQR": "🎀 Créer QR Code ✨"
+  }
+}

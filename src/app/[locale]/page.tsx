@@ -1,8 +1,16 @@
 import Link from 'next/link';
 import QRCodeGenerator from '@/components/QRCodeGenerator';
 import AdBanner from '@/components/AdBanner';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
 
-export default function Home() {
+interface HomeProps {
+  params: Promise<{ locale: string }>;
+}
+
+export default async function Home({ params }: HomeProps) {
+  const { locale } = await params;
+  const t = await import(`../../../messages/${locale}.json`);
+  const messages = t.default;
   const utilityCategories = [
     {
       title: 'QR코드 도구',
@@ -128,34 +136,37 @@ export default function Home() {
         <div className="text-center mb-12">
           <h1 className="text-5xl font-bold bg-gradient-to-r from-pink-500 via-purple-500 to-blue-600 bg-clip-text text-transparent mb-4">
             <span className="text-4xl mr-3">🎀</span>
-            Kawaii Utils
+            {messages.home.title}
             <span className="text-4xl ml-3">✨</span>
           </h1>
           <p className="text-xl text-purple-700 mb-6">
-            귀여운 무료 온라인 도구 모음집! QR코드부터 변환기까지 🎀
+            {messages.home.subtitle}
           </p>
 
           {/* 네비게이션 */}
           <nav className="mb-8">
             <div className="inline-flex bg-white/80 backdrop-blur-sm rounded-2xl p-2 border-4 border-pink-200 shadow-lg">
               <Link
-                href="/"
+                href={`/${locale}`}
                 className="px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-xl font-medium transition-all duration-300 transform hover:scale-105"
               >
-                🏠 홈
+                {messages.common.home}
               </Link>
               <Link
-                href="/blog"
+                href={`/${locale}/blog`}
                 className="px-6 py-3 text-purple-700 hover:bg-pink-100 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 mx-1"
               >
-                📚 블로그
+                {messages.common.blog}
               </Link>
               <Link
-                href="/faq"
+                href={`/${locale}/faq`}
                 className="px-6 py-3 text-purple-700 hover:bg-pink-100 rounded-xl font-medium transition-all duration-300 transform hover:scale-105"
               >
-                ❓ FAQ
+                {messages.common.faq}
               </Link>
+              <div className="ml-2">
+                <LanguageSwitcher currentLocale={locale} />
+              </div>
             </div>
           </nav>
         </div>

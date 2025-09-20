@@ -2,19 +2,20 @@ import Link from 'next/link';
 
 interface MessagePageProps {
   params: Promise<{
+    locale: string;
     id: string;
   }>;
 }
 
 export default async function MessagePage({ params }: MessagePageProps) {
-  const { id } = await params;
-  
+  const { locale, id } = await params;
+
   // URL 파라미터를 안전하게 디코딩
   let message: string;
   try {
     // 이미 디코딩된 경우와 인코딩된 경우 모두 처리
     message = decodeURIComponent(id);
-  } catch (error) {
+  } catch {
     // 디코딩 실패 시 원본 사용
     message = id;
   }
@@ -43,7 +44,9 @@ export default async function MessagePage({ params }: MessagePageProps) {
           <div className="mb-6">
             <div className="text-6xl mb-4 animate-bounce">🎀</div>
             <h1 className="text-3xl font-bold bg-gradient-to-r from-pink-500 via-purple-500 to-blue-600 bg-clip-text text-transparent mb-4">
-              특별한 메시지가 도착했어요!
+              {locale === 'ko' && '특별한 메시지가 도착했어요!'}
+              {locale === 'en' && 'Special message arrived!'}
+              {locale === 'fr' && 'Message spécial arrivé !'}
             </h1>
           </div>
 
@@ -52,8 +55,10 @@ export default async function MessagePage({ params }: MessagePageProps) {
           </div>
 
           <div className="text-sm text-purple-600 mb-6">
-            <span className="text-lg mr-2">💫</span>이 메시지는 QR코드로
-            전달되었어요!
+            <span className="text-lg mr-2">💫</span>
+            {locale === 'ko' && '이 메시지는 QR코드로 전달되었어요!'}
+            {locale === 'en' && 'This message was delivered via QR code!'}
+            {locale === 'fr' && 'Ce message a été livré via QR code !'}
             <span className="text-lg ml-2">✨</span>
           </div>
         </div>
@@ -61,20 +66,24 @@ export default async function MessagePage({ params }: MessagePageProps) {
         {/* 액션 버튼들 */}
         <div className="space-y-4">
           <Link
-            href="/"
+            href={`/${locale}`}
             className="inline-block bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-lg"
           >
             <span className="text-lg mr-2">🏠</span>
-            홈으로 돌아가기
+            {locale === 'ko' && '홈으로 돌아가기'}
+            {locale === 'en' && 'Back to Home'}
+            {locale === 'fr' && "Retour à l'Accueil"}
           </Link>
 
           <div className="text-center">
             <Link
-              href="/"
+              href={`/${locale}`}
               className="text-purple-600 hover:text-purple-800 font-medium transition-colors duration-300"
             >
               <span className="text-lg mr-2">🎀</span>
-              나도 QR코드 만들어보기
+              {locale === 'ko' && '나도 QR코드 만들어보기'}
+              {locale === 'en' && 'Create QR Code'}
+              {locale === 'fr' && 'Créer QR Code'}
               <span className="text-lg ml-2">✨</span>
             </Link>
           </div>

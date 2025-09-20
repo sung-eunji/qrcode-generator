@@ -1,0 +1,87 @@
+{
+  "common": {
+    "home": "🏠 Home",
+    "blog": "📚 Blog",
+    "faq": "❓ FAQ",
+    "use": "Use",
+    "comingSoon": "Coming Soon ✨"
+  },
+  "home": {
+    "title": "Kawaii Utils",
+    "subtitle": "Cute free online tools collection! From QR codes to converters 🎀",
+    "allTools": "All Tools Collection 💕",
+    "whyChoose": "Why choose Kawaii Utils? 💖",
+    "completelyFree": "Completely Free",
+    "completelyFreeDesc": "Use all tools for free!",
+    "mobileOptimized": "Mobile Optimized",
+    "mobileOptimizedDesc": "Use conveniently anywhere!",
+    "fastSpeed": "Fast Speed",
+    "fastSpeedDesc": "Check results instantly!"
+  },
+  "categories": {
+    "qrTools": "QR Code Tools",
+    "converters": "Converters",
+    "devTools": "Developer Tools",
+    "dailyTools": "Daily Tools"
+  },
+  "qrTools": {
+    "generator": "QR Code Generator",
+    "generatorDesc": "Generate various types of QR codes",
+    "analyzer": "QR Code Analyzer",
+    "analyzerDesc": "Analyze QR code content",
+    "customizer": "QR Code Customizer",
+    "customizerDesc": "Insert logos, change colors"
+  },
+  "converters": {
+    "timezone": "Timezone Converter",
+    "timezoneDesc": "World time conversion",
+    "currency": "Currency Converter",
+    "currencyDesc": "Real-time exchange rate calculation",
+    "unit": "Unit Converter",
+    "unitDesc": "Length, weight, temperature, etc."
+  },
+  "devTools": {
+    "base64": "Base64 Encoder",
+    "base64Desc": "Base64 encoding/decoding",
+    "hash": "Hash Generator",
+    "hashDesc": "MD5, SHA256 hash",
+    "json": "JSON Formatter",
+    "jsonDesc": "JSON sorting and validation"
+  },
+  "dailyTools": {
+    "color": "Color Picker",
+    "colorDesc": "HEX, RGB color conversion",
+    "random": "Random Generator",
+    "randomDesc": "Numbers, colors, passwords",
+    "date": "Date Calculator",
+    "dateDesc": "Date difference, day calculation"
+  },
+  "qrGenerator": {
+    "title": "QR Code Generator ✨",
+    "subtitle": "Create beautiful QR codes instantly!",
+    "inputLabel": "Enter text or URL",
+    "inputPlaceholder": "Type your message here...",
+    "generateButton": "Generate QR Code 🎀",
+    "downloadButton": "Download QR Code 💖",
+    "copyButton": "Copy QR Code 📋",
+    "shareButton": "Share QR Code 📤",
+    "previewTitle": "QR Code Preview",
+    "customizeTitle": "Customize QR Code",
+    "sizeLabel": "Size",
+    "errorCorrectionLabel": "Error Correction",
+    "marginLabel": "Margin",
+    "colorLabel": "Color",
+    "backgroundColorLabel": "Background Color",
+    "logoLabel": "Logo",
+    "logoPlaceholder": "Upload logo (optional)",
+    "successMessage": "QR code generated successfully! ✨",
+    "errorMessage": "Please enter some text to generate QR code",
+    "downloadSuccess": "QR code downloaded successfully! 💖"
+  },
+  "message": {
+    "title": "Special message arrived!",
+    "subtitle": "This message was delivered via QR code!",
+    "backHome": "🏠 Back to Home",
+    "createQR": "🎀 Create QR Code ✨"
+  }
+}
