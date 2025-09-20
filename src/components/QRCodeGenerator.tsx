@@ -34,24 +34,60 @@ const getBaseUrl = () => {
     : 'https://kawaii-utils.vercel.app';
 };
 
-// 랜덤 메시지 배열
-const randomMessages = [
-  '안녕하세요! 오늘도 좋은 하루 되세요! 💕',
-  '당신의 미소가 세상을 밝게 만들어요! ✨',
-  '오늘도 화이팅! 할 수 있어요! 🌟',
-  '당신은 정말 특별한 사람이에요! 🎀',
-  '오늘 하루도 행복하게 보내세요! 💖',
-  '당신의 꿈이 이루어지길 바라요! 🌈',
-  '항상 건강하고 행복하세요! 🌸',
-  '당신의 노력이 빛날 거예요! ⭐',
-  '오늘도 멋진 하루 되세요! 🦄',
-  '당신을 응원해요! 파이팅! 🎉',
-  '사랑과 행복이 가득한 하루 되세요! 💝',
-  '당신의 따뜻한 마음이 전해져요! 🌺',
-  '오늘도 웃음 가득한 하루 되세요! 😊',
-  '당신의 긍정적인 에너지가 좋아요! ⚡',
-  '모든 일이 잘 풀릴 거예요! 🍀',
-];
+// 랜덤 메시지 배열 (다국어)
+const randomMessages = {
+  ko: [
+    '안녕하세요! 오늘도 좋은 하루 되세요! 💕',
+    '당신의 미소가 세상을 밝게 만들어요! ✨',
+    '오늘도 화이팅! 할 수 있어요! 🌟',
+    '당신은 정말 특별한 사람이에요! 🎀',
+    '오늘 하루도 행복하게 보내세요! 💖',
+    '당신의 꿈이 이루어지길 바라요! 🌈',
+    '항상 건강하고 행복하세요! 🌸',
+    '당신의 노력이 빛날 거예요! ⭐',
+    '오늘도 멋진 하루 되세요! 🦄',
+    '당신을 응원해요! 파이팅! 🎉',
+    '사랑과 행복이 가득한 하루 되세요! 💝',
+    '당신의 따뜻한 마음이 전해져요! 🌺',
+    '오늘도 웃음 가득한 하루 되세요! 😊',
+    '당신의 긍정적인 에너지가 좋아요! ⚡',
+    '모든 일이 잘 풀릴 거예요! 🍀',
+  ],
+  en: [
+    'Hello! Have a wonderful day today! 💕',
+    'Your smile brightens the world! ✨',
+    'You can do it! Fighting! 🌟',
+    'You are truly a special person! 🎀',
+    'Have a happy day today! 💖',
+    'May all your dreams come true! 🌈',
+    'Stay healthy and happy always! 🌸',
+    'Your efforts will shine! ⭐',
+    'Have an amazing day today! 🦄',
+    'I\'m cheering for you! Go for it! 🎉',
+    'Have a day full of love and happiness! 💝',
+    'Your warm heart touches everyone! 🌺',
+    'Have a day full of laughter! 😊',
+    'Your positive energy is wonderful! ⚡',
+    'Everything will work out perfectly! 🍀',
+  ],
+  fr: [
+    'Bonjour! Passez une merveilleuse journée! 💕',
+    'Votre sourire illumine le monde! ✨',
+    'Vous pouvez y arriver! Courage! 🌟',
+    'Vous êtes vraiment une personne spéciale! 🎀',
+    'Passez une journée heureuse! 💖',
+    'Que tous vos rêves se réalisent! 🌈',
+    'Restez toujours en bonne santé et heureux! 🌸',
+    'Vos efforts brilleront! ⭐',
+    'Passez une journée incroyable! 🦄',
+    'Je vous encourage! Allez-y! 🎉',
+    'Passez une journée pleine d\'amour et de bonheur! 💝',
+    'Votre cœur chaleureux touche tout le monde! 🌺',
+    'Passez une journée pleine de rires! 😊',
+    'Votre énergie positive est merveilleuse! ⚡',
+    'Tout se passera parfaitement bien! 🍀',
+  ]
+};
 
 export default function QRCodeGenerator({
   className = '',
@@ -60,71 +96,72 @@ export default function QRCodeGenerator({
   // 다국어 텍스트 정의
   const translations = {
     ko: {
-      title: "QR코드 생성기 ✨",
-      selectType: "QR 코드 타입을 선택해주세요!💕",
+      title: 'QR코드 생성기 ✨',
+      selectType: 'QR 코드 타입을 선택해주세요!💕',
       types: {
-        text: "📝텍스트",
-        url: "🌐URL", 
-        wifi: "📶WiFi",
-        contact: "👤연락처",
-        sms: "💬SMS",
-        email: "📧이메일",
-        phone: "📞전화"
+        text: '텍스트',
+        url: 'URL',
+        wifi: 'WiFi',
+        contact: '연락처',
+        sms: 'SMS',
+        email: '이메일',
+        phone: '전화',
       },
-      inputPlaceholder: "💕 특별한 메시지를 입력하세요",
-      randomMessage: "🎲랜덤 메시지",
-      example: "예: 안녕하세요! 오늘도 좋은 하루 되세요! 💕",
-      generateButton: "QR 코드 생성하기! 🎀",
-      generating: "생성 중...",
-      wifiPlaceholder: "WiFi 정보를 입력하세요",
-      contactPlaceholder: "연락처 정보를 입력하세요",
-      urlPlaceholder: "🌐 URL을 입력하세요"
+      inputPlaceholder: '💕 특별한 메시지를 입력하세요',
+      randomMessage: '🎲랜덤 메시지',
+      example: '예: 안녕하세요! 오늘도 좋은 하루 되세요! 💕',
+      generateButton: 'QR 코드 생성하기! 🎀',
+      generating: '생성 중...',
+      wifiPlaceholder: 'WiFi 정보를 입력하세요',
+      contactPlaceholder: '연락처 정보를 입력하세요',
+      urlPlaceholder: '🌐 URL을 입력하세요',
     },
     en: {
-      title: "QR Code Generator ✨",
-      selectType: "Please select QR code type!💕",
+      title: 'QR Code Generator ✨',
+      selectType: 'Please select QR code type!💕',
       types: {
-        text: "📝Text",
-        url: "🌐URL",
-        wifi: "📶WiFi", 
-        contact: "👤Contact",
-        sms: "💬SMS",
-        email: "📧Email",
-        phone: "📞Phone"
+        text: 'Text',
+        url: 'URL',
+        wifi: 'WiFi',
+        contact: 'Contact',
+        sms: 'SMS',
+        email: 'Email',
+        phone: 'Phone',
       },
-      inputPlaceholder: "💕 Enter your special message",
-      randomMessage: "🎲Random Message",
-      example: "e.g: Hello! Have a great day today! 💕",
-      generateButton: "Generate QR Code! 🎀",
-      generating: "Generating...",
-      wifiPlaceholder: "Enter WiFi information",
-      contactPlaceholder: "Enter contact information", 
-      urlPlaceholder: "🌐 Enter URL"
+      inputPlaceholder: '💕 Enter your special message',
+      randomMessage: '🎲Random Message',
+      example: 'e.g: Hello! Have a great day today! 💕',
+      generateButton: 'Generate QR Code! 🎀',
+      generating: 'Generating...',
+      wifiPlaceholder: 'Enter WiFi information',
+      contactPlaceholder: 'Enter contact information',
+      urlPlaceholder: '🌐 Enter URL',
     },
     fr: {
-      title: "Générateur QR Code ✨",
-      selectType: "Veuillez sélectionner le type de QR code!💕",
+      title: 'Générateur QR Code ✨',
+      selectType: 'Veuillez sélectionner le type de QR code!💕',
       types: {
-        text: "📝Texte",
-        url: "🌐URL",
-        wifi: "📶WiFi",
-        contact: "👤Contact", 
-        sms: "💬SMS",
-        email: "📧Email",
-        phone: "📞Téléphone"
+        text: 'Texte',
+        url: 'URL',
+        wifi: 'WiFi',
+        contact: 'Contact',
+        sms: 'SMS',
+        email: 'Email',
+        phone: 'Téléphone',
       },
-      inputPlaceholder: "💕 Entrez votre message spécial",
-      randomMessage: "🎲Message Aléatoire",
-      example: "ex: Bonjour! Passez une excellente journée! 💕",
-      generateButton: "Générer QR Code! 🎀",
-      generating: "Génération...",
-      wifiPlaceholder: "Entrez les informations WiFi",
-      contactPlaceholder: "Entrez les informations de contact",
-      urlPlaceholder: "🌐 Entrez l'URL"
-    }
+      inputPlaceholder: '💕 Entrez votre message spécial',
+      randomMessage: '🎲Message Aléatoire',
+      example: 'ex: Bonjour! Passez une excellente journée! 💕',
+      generateButton: 'Générer QR Code! 🎀',
+      generating: 'Génération...',
+      wifiPlaceholder: 'Entrez les informations WiFi',
+      contactPlaceholder: 'Entrez les informations de contact',
+      urlPlaceholder: "🌐 Entrez l'URL",
+    },
   };
-  
-  const t = translations[locale as keyof typeof translations] || translations.ko;
+
+  const t =
+    translations[locale as keyof typeof translations] || translations.ko;
   const [qrType, setQrType] = useState<QRType>('text');
   const [text, setText] = useState('');
   const [wifiData, setWifiData] = useState<WiFiData>({
@@ -281,8 +318,9 @@ export default function QRCodeGenerator({
   };
 
   const generateRandomMessage = () => {
-    const randomIndex = Math.floor(Math.random() * randomMessages.length);
-    const randomMessage = randomMessages[randomIndex];
+    const messages = randomMessages[locale as keyof typeof randomMessages] || randomMessages.ko;
+    const randomIndex = Math.floor(Math.random() * messages.length);
+    const randomMessage = messages[randomIndex];
     setText(randomMessage);
   };
 
@@ -517,7 +555,6 @@ export default function QRCodeGenerator({
                     onClick={generateRandomMessage}
                     className="bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500 text-white text-xs font-bold py-2 px-3 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-md"
                   >
-                    <span className="text-sm mr-1">🎲</span>
                     {t.randomMessage}
                   </button>
                 )}
