@@ -1,14 +1,50 @@
-import createMiddleware from 'next-intl/middleware';
+import { NextRequest, NextResponse } from 'next/server';
 
-export default createMiddleware({
-  // A list of all locales that are supported
-  locales: ['en', 'fr', 'ko'],
+const locales = ['ko', 'en', 'fr'];
+const defaultLocale = 'ko';
 
-  // Used when no locale matches
-  defaultLocale: 'ko',
-});
+function getLocale(request: NextRequest): string {
+  // Check if there is any supported locale in the pathname
+  const pathname = request.nextUrl.pathname;
+  const pathnameIsMissingLocale = locales.every(
+    (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
+  );
+
+  // Redirect if there is no locale
+  if (pathnameIsMissingLocale) {
+    return defaultLocale;
+  }
+
+  // Extract locale from pathname
+  const locale = pathname.split('/')[1];
+  return locales.includes(locale) ? locale : defaultLocale;
+}
+
+export function middleware(request: NextRequest) {
+  const pathname = request.nextUrl.pathname;
+
+  // Check if there is any supported locale in the pathname
+  const pathnameIsMissingLocale = locales.every(
+    (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
+  );
+
+  // Redirect if there is no locale
+  if (pathnameIsMissingLocale) {
+    const locale = getLocale(request);
+
+    // e.g. incoming request is /products
+    // The new URL is now /ko/products
+    return NextResponse.redirect(
+      new URL(`/${locale}${pathname.startsWith('/') ? '' : '/'}${pathname}`, request.url)
+    );
+  }
+}
 
 export const config = {
-  // Match only internationalized pathnames
-  matcher: ['/', '/(fr|en|ko)/:path*', '/((?!_next|_vercel|.*\\..*).*)'],
+  matcher: [
+    // Skip all internal paths (_next)
+    '/((?!_next|api|favicon.ico).*)',
+    // Optional: only run on root (/) URL
+    // '/'
+  ],
 };

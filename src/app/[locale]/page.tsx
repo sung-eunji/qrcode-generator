@@ -9,8 +9,27 @@ interface HomeProps {
 
 export default async function Home({ params }: HomeProps) {
   const { locale } = await params;
-  const t = await import(`../../../messages/${locale}.json`);
-  const messages = t.default;
+  
+  // 다국어 텍스트 정의
+  const messages = {
+    ko: {
+      common: { home: "🏠 홈", blog: "📚 블로그", faq: "❓ FAQ", use: "사용하기", comingSoon: "준비중 ✨" },
+      home: { title: "Kawaii Utils", subtitle: "귀여운 무료 온라인 도구 모음집! QR코드부터 변환기까지 🎀" },
+      categories: { qrTools: "QR코드 도구", converters: "변환기", devTools: "개발자 도구", dailyTools: "일상 도구" }
+    },
+    en: {
+      common: { home: "🏠 Home", blog: "📚 Blog", faq: "❓ FAQ", use: "Use", comingSoon: "Coming Soon ✨" },
+      home: { title: "Kawaii Utils", subtitle: "Cute free online tools collection! From QR codes to converters 🎀" },
+      categories: { qrTools: "QR Code Tools", converters: "Converters", devTools: "Developer Tools", dailyTools: "Daily Tools" }
+    },
+    fr: {
+      common: { home: "🏠 Accueil", blog: "📚 Blog", faq: "❓ FAQ", use: "Utiliser", comingSoon: "Bientôt ✨" },
+      home: { title: "Kawaii Utils", subtitle: "Collection d'outils en ligne gratuits et mignons ! Des QR codes aux convertisseurs 🎀" },
+      categories: { qrTools: "Outils QR Code", converters: "Convertisseurs", devTools: "Outils Développeur", dailyTools: "Outils Quotidiens" }
+    }
+  };
+  
+  const t = messages[locale as keyof typeof messages] || messages.ko;
   const utilityCategories = [
     {
       title: 'QR코드 도구',
@@ -136,11 +155,11 @@ export default async function Home({ params }: HomeProps) {
         <div className="text-center mb-12">
           <h1 className="text-5xl font-bold bg-gradient-to-r from-pink-500 via-purple-500 to-blue-600 bg-clip-text text-transparent mb-4">
             <span className="text-4xl mr-3">🎀</span>
-            {messages.home.title}
+            {t.home.title}
             <span className="text-4xl ml-3">✨</span>
           </h1>
           <p className="text-xl text-purple-700 mb-6">
-            {messages.home.subtitle}
+            {t.home.subtitle}
           </p>
 
           {/* 네비게이션 */}
@@ -150,19 +169,19 @@ export default async function Home({ params }: HomeProps) {
                 href={`/${locale}`}
                 className="px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-xl font-medium transition-all duration-300 transform hover:scale-105"
               >
-                {messages.common.home}
+                {t.common.home}
               </Link>
               <Link
                 href={`/${locale}/blog`}
                 className="px-6 py-3 text-purple-700 hover:bg-pink-100 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 mx-1"
               >
-                {messages.common.blog}
+                {t.common.blog}
               </Link>
               <Link
                 href={`/${locale}/faq`}
                 className="px-6 py-3 text-purple-700 hover:bg-pink-100 rounded-xl font-medium transition-all duration-300 transform hover:scale-105"
               >
-                {messages.common.faq}
+                {t.common.faq}
               </Link>
               <div className="ml-2">
                 <LanguageSwitcher currentLocale={locale} />

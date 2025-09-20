@@ -116,18 +116,14 @@ export default function RootLayout({
   };
 
   return (
-    <html>
+    <>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
+      {children}
+    </>
   );
 }
