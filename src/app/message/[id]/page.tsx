@@ -1,20 +1,22 @@
 import Link from 'next/link';
 
 interface MessagePageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
-export default function MessagePage({ params }: MessagePageProps) {
+export default async function MessagePage({ params }: MessagePageProps) {
+  const { id } = await params;
+  
   // URL 파라미터를 안전하게 디코딩
   let message: string;
   try {
     // 이미 디코딩된 경우와 인코딩된 경우 모두 처리
-    message = decodeURIComponent(params.id);
+    message = decodeURIComponent(id);
   } catch (error) {
     // 디코딩 실패 시 원본 사용
-    message = params.id;
+    message = id;
   }
 
   return (

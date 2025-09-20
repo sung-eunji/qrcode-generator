@@ -15,6 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://kawaii-utils.com'),
   title: 'Kawaii Utils - 무료 온라인 도구 모음집 | QR코드, 변환기, 개발자 도구',
+  icons: {
+    icon: '🎀',
+  },
   description:
     '귀여운 무료 온라인 도구 모음집! QR코드 생성기, 시간대 변환기, 환율 변환기, 단위 변환기, Base64 인코더, 해시 생성기 등 다양한 유틸리티를 무료로 사용하세요.',
   keywords: [
