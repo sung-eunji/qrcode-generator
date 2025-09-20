@@ -2,6 +2,7 @@
 
 import { useState, useRef } from 'react';
 import QRCode from 'qrcode';
+import { useTranslations } from 'next-intl';
 
 interface QRCodeGeneratorProps {
   className?: string;
@@ -55,6 +56,7 @@ const randomMessages = [
 export default function QRCodeGenerator({
   className = '',
 }: QRCodeGeneratorProps) {
+  const t = useTranslations('qrGenerator');
   const [qrType, setQrType] = useState<QRType>('text');
   const [text, setText] = useState('');
   const [wifiData, setWifiData] = useState<WiFiData>({
@@ -219,9 +221,9 @@ export default function QRCodeGenerator({
   const getInputLabel = () => {
     switch (qrType) {
       case 'text':
-        return '💕 특별한 메시지를 입력하세요';
+        return t('inputPlaceholder');
       case 'url':
-        return 'URL을 입력하세요';
+        return t('inputPlaceholder');
       case 'wifi':
         return 'WiFi 정보를 입력하세요';
       case 'contact':
@@ -264,7 +266,7 @@ export default function QRCodeGenerator({
 
       <h1 className="text-4xl font-bold bg-gradient-to-r from-pink-500 via-purple-500 to-pink-600 bg-clip-text text-transparent mb-8 text-center relative">
         <span className="text-3xl mr-2">🎀</span>
-        카와이 QR 코드 생성기
+        {t('title')}
         <span className="text-3xl ml-2">✨</span>
       </h1>
 
@@ -477,7 +479,7 @@ export default function QRCodeGenerator({
               ) : (
                 <>
                   <span className="text-lg mr-2">✨</span>
-                  QR 코드 생성하기!
+                  {t('generateButton')}
                 </>
               )}
             </button>

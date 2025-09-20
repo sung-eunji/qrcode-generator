@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import QRCodeGenerator from '@/components/QRCodeGenerator';
 import AdBanner from '@/components/AdBanner';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
+import QRCodeGeneratorWrapper from '@/components/QRCodeGeneratorWrapper';
 
 interface HomeProps {
   params: Promise<{ locale: string }>;
@@ -182,7 +182,7 @@ export default async function Home({ params }: HomeProps) {
 
         {/* 메인 QR코드 생성기 */}
         <div className="mb-12">
-          <QRCodeGenerator />
+          <QRCodeGeneratorWrapper />
         </div>
 
         {/* 유틸리티 카테고리 */}
