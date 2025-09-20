@@ -173,9 +173,9 @@ export default async function Home({ params }: HomeProps) {
       tools: [
         {
           name: t.tools.timezoneConverter,
-          path: '/timezone-converter',
+          path: `/${locale}/timezone-converter`,
           description: t.tools.timezoneConverterDesc,
-          comingSoon: true,
+          comingSoon: false,
         },
         {
           name: t.tools.currencyConverter,
