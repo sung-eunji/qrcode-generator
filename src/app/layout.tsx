@@ -93,9 +93,9 @@ export default function RootLayout({
   const structuredData = {
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
-    name: 'Kawaii Utils - 무료 온라인 도구 모음집',
+    name: '무료 QR코드 생성기',
     description:
-      '귀여운 무료 온라인 도구 모음집! QR코드 생성기, 시간대 변환기, 환율 변환기, 단위 변환기, Base64 인코더, 해시 생성기 등 다양한 유틸리티를 무료로 사용하세요.',
+      '무료로 QR코드를 생성하세요! URL, 텍스트, 연락처, WiFi 등 다양한 형태의 QR코드를 쉽고 빠르게 만들 수 있습니다.',
     url: 'https://kawaii-utils.com',
     applicationCategory: 'UtilityApplication',
     operatingSystem: 'Web Browser',
@@ -105,18 +105,10 @@ export default function RootLayout({
       priceCurrency: 'KRW',
     },
     featureList: [
-      '무료 QR코드 생성기',
-      '시간대 변환기',
-      '환율 변환기',
-      '단위 변환기',
-      'Base64 인코더',
-      '해시 생성기',
-      'JSON 포맷터',
-      '색상 선택기',
-      '랜덤 생성기',
-      '날짜 계산기',
+      '무료 QR코드 생성',
+      '다양한 QR코드 타입 지원',
+      '고해상도 다운로드',
       '모바일 최적화',
-      '완전 무료',
     ],
   };
 

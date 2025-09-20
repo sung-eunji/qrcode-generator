@@ -22,6 +22,36 @@ interface ContactData {
   organization: string;
 }
 
+// 기본 URL 설정
+const getBaseUrl = () => {
+  if (typeof window !== 'undefined') {
+    return window.location.origin;
+  }
+  // 개발 환경에서는 localhost, 프로덕션에서는 실제 도메인
+  return process.env.NODE_ENV === 'development'
+    ? 'http://localhost:3000'
+    : 'https://kawaii-utils.vercel.app';
+};
+
+// 랜덤 메시지 배열
+const randomMessages = [
+  '안녕하세요! 오늘도 좋은 하루 되세요! 💕',
+  '당신의 미소가 세상을 밝게 만들어요! ✨',
+  '오늘도 화이팅! 할 수 있어요! 🌟',
+  '당신은 정말 특별한 사람이에요! 🎀',
+  '오늘 하루도 행복하게 보내세요! 💖',
+  '당신의 꿈이 이루어지길 바라요! 🌈',
+  '항상 건강하고 행복하세요! 🌸',
+  '당신의 노력이 빛날 거예요! ⭐',
+  '오늘도 멋진 하루 되세요! 🦄',
+  '당신을 응원해요! 파이팅! 🎉',
+  '사랑과 행복이 가득한 하루 되세요! 💝',
+  '당신의 따뜻한 마음이 전해져요! 🌺',
+  '오늘도 웃음 가득한 하루 되세요! 😊',
+  '당신의 긍정적인 에너지가 좋아요! ⚡',
+  '모든 일이 잘 풀릴 거예요! 🍀',
+];
+
 export default function QRCodeGenerator({
   className = '',
 }: QRCodeGeneratorProps) {
@@ -57,8 +87,18 @@ export default function QRCodeGenerator({
             return;
           }
           // 텍스트 메시지인 경우 메시지 표시 페이지로 연결
+          // 이중 인코딩을 방지하기 위해 안전하게 처리
           const encodedMessage = encodeURIComponent(text);
-          qrContent = `${window.location.origin}/message/${encodedMessage}`;
+          qrContent = `${getBaseUrl()}/message/${encodedMessage}`;
+
+          // URL 검증
+          try {
+            new URL(qrContent);
+          } catch (error) {
+            console.error('❌ Invalid URL generated:', error);
+            setError('유효하지 않은 URL이 생성되었습니다.');
+            return;
+          }
           break;
         case 'url':
           if (!text.trim()) {
@@ -119,12 +159,13 @@ export default function QRCodeGenerator({
       }
 
       const dataUrl = await QRCode.toDataURL(qrContent, {
-        width: 300,
-        margin: 2,
+        width: 400,
+        margin: 4,
         color: {
           dark: '#000000',
           light: '#FFFFFF',
         },
+        errorCorrectionLevel: 'M',
       });
 
       setQrCodeDataUrl(dataUrl);
@@ -155,8 +196,30 @@ export default function QRCodeGenerator({
     setError('');
   };
 
+  const copyUrlToClipboard = () => {
+    if (qrType === 'text' && text.trim()) {
+      const url = `${getBaseUrl()}/message/${encodeURIComponent(text)}`;
+      navigator.clipboard
+        .writeText(url)
+        .then(() => {
+          alert('URL이 클립보드에 복사되었습니다! 📋');
+        })
+        .catch(() => {
+          alert('URL 복사에 실패했습니다. 수동으로 복사해주세요.');
+        });
+    }
+  };
+
+  const generateRandomMessage = () => {
+    const randomIndex = Math.floor(Math.random() * randomMessages.length);
+    const randomMessage = randomMessages[randomIndex];
+    setText(randomMessage);
+  };
+
   const getInputLabel = () => {
     switch (qrType) {
+      case 'text':
+        return '💕 특별한 메시지를 입력하세요';
       case 'url':
         return 'URL을 입력하세요';
       case 'wifi':
@@ -176,6 +239,8 @@ export default function QRCodeGenerator({
 
   const getPlaceholder = () => {
     switch (qrType) {
+      case 'text':
+        return '예: 안녕하세요! 오늘도 좋은 하루 되세요! 💕';
       case 'url':
         return 'https://example.com 🌸';
       case 'sms':
@@ -368,13 +433,25 @@ export default function QRCodeGenerator({
             qrType === 'email' ||
             qrType === 'phone') && (
             <div>
-              <label
-                htmlFor="qr-text"
-                className="block text-sm font-bold text-purple-700 mb-2"
-              >
-                <span className="text-lg mr-1">✨</span>
-                {getInputLabel()}
-              </label>
+              <div className="flex items-center justify-between mb-2">
+                <label
+                  htmlFor="qr-text"
+                  className="block text-sm font-bold text-purple-700"
+                >
+                  <span className="text-lg mr-1">✨</span>
+                  {getInputLabel()}
+                </label>
+                {qrType === 'text' && (
+                  <button
+                    type="button"
+                    onClick={generateRandomMessage}
+                    className="bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500 text-white text-xs font-bold py-2 px-3 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-md"
+                  >
+                    <span className="text-sm mr-1">🎲</span>
+                    랜덤 메시지
+                  </button>
+                )}
+              </div>
               <textarea
                 id="qr-text"
                 value={text}
@@ -415,6 +492,16 @@ export default function QRCodeGenerator({
               </button>
             )}
 
+            {qrCodeDataUrl && qrType === 'text' && (
+              <button
+                onClick={copyUrlToClipboard}
+                className="bg-gradient-to-r from-blue-400 to-cyan-500 hover:from-blue-500 hover:to-cyan-600 text-white font-bold py-4 px-6 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-lg"
+              >
+                <span className="text-lg mr-2">📋</span>
+                URL 복사
+              </button>
+            )}
+
             {qrCodeDataUrl && (
               <button
                 onClick={clearQRCode}
@@ -450,8 +537,8 @@ export default function QRCodeGenerator({
               <img
                 src={qrCodeDataUrl}
                 alt="Generated QR Code"
-                width={300}
-                height={300}
+                width={400}
+                height={400}
                 className="max-w-full h-auto"
               />
             </div>
@@ -470,10 +557,31 @@ export default function QRCodeGenerator({
                   <>
                     <br />
                     <span className="text-lg mr-2">📝</span>
-                    내용:{' '}
+                    {qrType === 'text' ? '메시지' : '내용'}:{' '}
                     <span className="font-mono bg-gradient-to-r from-pink-100 to-purple-100 px-3 py-1 rounded-lg text-purple-800">
                       {text}
                     </span>
+                    {qrType === 'text' && (
+                      <>
+                        <br />
+                        <span className="text-lg mr-2">🔗</span>
+                        연결 URL:{' '}
+                        <span className="font-mono bg-gradient-to-r from-pink-100 to-purple-100 px-3 py-1 rounded-lg text-purple-800 text-xs break-all">
+                          {`${getBaseUrl()}/message/${encodeURIComponent(
+                            text
+                          )}`}
+                        </span>
+                        <br />
+                        <span className="text-lg mr-2">🎀</span>
+                        QR코드를 스캔하면 카와이한 메시지 페이지가 열려요!
+                        <span className="text-lg ml-2">✨</span>
+                        <br />
+                        <span className="text-sm text-purple-600 mt-2 block">
+                          💡 QR 스캔이 안 되면 위 URL을 직접 복사해서 브라우저에
+                          붙여넣어보세요!
+                        </span>
+                      </>
+                    )}
                   </>
                 )}
                 {qrType === 'wifi' && (

@@ -1,73 +1,20 @@
-'use client';
+import Link from 'next/link';
 
-import { useState, useEffect } from 'react';
-import { useParams } from 'next/navigation';
-
-interface MessageData {
-  id: string;
-  message: string;
-  createdAt: string;
-  author?: string;
+interface MessagePageProps {
+  params: {
+    id: string;
+  };
 }
 
-export default function MessageDisplayPage() {
-  const params = useParams();
-  const [messageData, setMessageData] = useState<MessageData | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState('');
-
-  useEffect(() => {
-    const messageId = params.id as string;
-    
-    if (messageId) {
-      // URL에서 메시지 ID를 디코딩
-      try {
-        const decodedMessage = decodeURIComponent(messageId);
-        setMessageData({
-          id: messageId,
-          message: decodedMessage,
-          createdAt: new Date().toISOString(),
-        });
-        setIsLoading(false);
-      } catch (err) {
-        setError('메시지를 불러오는 중 오류가 발생했습니다.');
-        setIsLoading(false);
-      }
-    }
-  }, [params.id]);
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-pink-100 via-purple-50 to-blue-100 flex items-center justify-center relative overflow-hidden">
-        {/* 카와이한 배경 장식들 */}
-        <div className="absolute top-10 left-10 text-6xl animate-bounce">🌸</div>
-        <div className="absolute top-20 right-20 text-4xl animate-pulse">💖</div>
-        <div className="absolute bottom-20 left-20 text-5xl animate-bounce delay-1000">✨</div>
-        <div className="absolute bottom-10 right-10 text-4xl animate-pulse delay-500">🎀</div>
-        
-        <div className="text-center">
-          <div className="text-6xl mb-4 animate-spin">⏳</div>
-          <p className="text-2xl text-purple-700 font-bold">메시지를 불러오는 중...</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-pink-100 via-purple-50 to-blue-100 flex items-center justify-center relative overflow-hidden">
-        {/* 카와이한 배경 장식들 */}
-        <div className="absolute top-10 left-10 text-6xl animate-bounce">🌸</div>
-        <div className="absolute top-20 right-20 text-4xl animate-pulse">💖</div>
-        <div className="absolute bottom-20 left-20 text-5xl animate-bounce delay-1000">✨</div>
-        <div className="absolute bottom-10 right-10 text-4xl animate-pulse delay-500">🎀</div>
-        
-        <div className="text-center">
-          <div className="text-6xl mb-4">😢</div>
-          <p className="text-2xl text-red-600 font-bold">{error}</p>
-        </div>
-      </div>
-    );
+export default function MessagePage({ params }: MessagePageProps) {
+  // URL 파라미터를 안전하게 디코딩
+  let message: string;
+  try {
+    // 이미 디코딩된 경우와 인코딩된 경우 모두 처리
+    message = decodeURIComponent(params.id);
+  } catch (error) {
+    // 디코딩 실패 시 원본 사용
+    message = params.id;
   }
 
   return (
@@ -75,75 +22,71 @@ export default function MessageDisplayPage() {
       {/* 카와이한 배경 장식들 */}
       <div className="absolute top-10 left-10 text-6xl animate-bounce">🌸</div>
       <div className="absolute top-20 right-20 text-4xl animate-pulse">💖</div>
-      <div className="absolute bottom-20 left-20 text-5xl animate-bounce delay-1000">✨</div>
-      <div className="absolute bottom-10 right-10 text-4xl animate-pulse delay-500">🎀</div>
-      <div className="absolute top-1/2 left-5 text-3xl animate-bounce delay-700">🦄</div>
-      <div className="absolute top-1/3 right-5 text-4xl animate-pulse delay-300">💕</div>
-      <div className="absolute top-1/4 left-1/4 text-2xl animate-bounce delay-500">🌟</div>
-      <div className="absolute bottom-1/4 right-1/4 text-3xl animate-pulse delay-700">🎈</div>
+      <div className="absolute bottom-20 left-20 text-5xl animate-bounce delay-1000">
+        ✨
+      </div>
+      <div className="absolute bottom-10 right-10 text-4xl animate-pulse delay-500">
+        🎀
+      </div>
+      <div className="absolute top-1/2 left-5 text-3xl animate-bounce delay-700">
+        🦄
+      </div>
+      <div className="absolute top-1/3 right-5 text-4xl animate-pulse delay-300">
+        💕
+      </div>
 
-      <div className="max-w-2xl w-full relative z-10">
-        {/* 메인 메시지 카드 */}
-        <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 border-4 border-pink-200 shadow-2xl relative overflow-hidden">
-          {/* 카와이한 장식들 */}
-          <div className="absolute top-4 right-4 text-2xl animate-spin">💫</div>
-          <div className="absolute bottom-4 left-4 text-xl animate-bounce">🌸</div>
-          <div className="absolute top-1/2 left-4 text-2xl animate-pulse">💖</div>
-          <div className="absolute top-1/2 right-4 text-2xl animate-bounce delay-500">✨</div>
-
-          {/* 헤더 */}
-          <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-pink-500 via-purple-500 to-pink-600 bg-clip-text text-transparent mb-2">
-              <span className="text-3xl mr-2">🎀</span>
-              특별한 메시지
-              <span className="text-3xl ml-2">✨</span>
+      <div className="max-w-2xl mx-auto text-center relative z-10">
+        {/* 메시지 카드 */}
+        <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 border-4 border-pink-200 shadow-2xl mb-8">
+          <div className="mb-6">
+            <div className="text-6xl mb-4 animate-bounce">🎀</div>
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-pink-500 via-purple-500 to-blue-600 bg-clip-text text-transparent mb-4">
+              특별한 메시지가 도착했어요!
             </h1>
-            <p className="text-purple-600 text-lg">
-              누군가 당신에게 보낸 귀여운 메시지예요! 💕
-            </p>
           </div>
 
-          {/* 메시지 내용 */}
-          <div className="bg-gradient-to-br from-pink-50 to-purple-50 rounded-2xl p-6 border-2 border-pink-200 mb-6 relative">
-            <div className="absolute -top-2 -right-2 text-2xl animate-bounce">🎉</div>
-            <div className="absolute -bottom-2 -left-2 text-2xl animate-pulse">💖</div>
-            
-            <div className="text-center">
-              <p className="text-2xl text-purple-800 font-medium leading-relaxed whitespace-pre-wrap">
-                {messageData?.message}
-              </p>
-            </div>
+          <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-6 border-2 border-purple-200 mb-6">
+            <p className="text-xl text-purple-800 leading-relaxed">{message}</p>
           </div>
 
-          {/* 하단 정보 */}
-          <div className="text-center space-y-4">
-            <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-4 rounded-2xl border-2 border-purple-200">
-              <p className="text-sm text-purple-600">
-                <span className="text-lg mr-2">📅</span>
-                받은 시간: {new Date().toLocaleString('ko-KR')}
-              </p>
-            </div>
-
-            {/* 홈으로 돌아가기 버튼 */}
-            <div className="pt-4">
-              <a
-                href="/"
-                className="inline-flex items-center bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white font-bold py-3 px-6 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-lg"
-              >
-                <span className="text-lg mr-2">🏠</span>
-                홈으로 돌아가기
-              </a>
-            </div>
+          <div className="text-sm text-purple-600 mb-6">
+            <span className="text-lg mr-2">💫</span>이 메시지는 QR코드로
+            전달되었어요!
+            <span className="text-lg ml-2">✨</span>
           </div>
         </div>
 
-        {/* 하단 장식 */}
-        <div className="text-center mt-8">
-          <p className="text-purple-600 text-sm">
-            <span className="text-lg mr-1">💕</span>
-            Kawaii Utils로 만든 특별한 메시지
-            <span className="text-lg ml-1">✨</span>
-          </p>
+        {/* 액션 버튼들 */}
+        <div className="space-y-4">
+          <Link
+            href="/"
+            className="inline-block bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-lg"
+          >
+            <span className="text-lg mr-2">🏠</span>
+            홈으로 돌아가기
+          </Link>
+
+          <div className="text-center">
+            <Link
+              href="/"
+              className="text-purple-600 hover:text-purple-800 font-medium transition-colors duration-300"
+            >
+              <span className="text-lg mr-2">🎀</span>
+              나도 QR코드 만들어보기
+              <span className="text-lg ml-2">✨</span>
+            </Link>
+          </div>
+        </div>
+
+        {/* 추가 장식 */}
+        <div className="mt-8 text-center">
+          <div className="inline-flex space-x-4 text-2xl">
+            <span className="animate-bounce delay-100">💖</span>
+            <span className="animate-bounce delay-200">🌸</span>
+            <span className="animate-bounce delay-300">✨</span>
+            <span className="animate-bounce delay-400">🎀</span>
+            <span className="animate-bounce delay-500">💕</span>
+          </div>
         </div>
       </div>
     </div>

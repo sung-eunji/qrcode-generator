@@ -18,9 +18,17 @@ export default function AdBanner({
   responsive = true,
 }: AdBannerProps) {
   useEffect(() => {
+    // 개발 환경에서는 AdSense 스크립트를 로드하지 않음
+    if (process.env.NODE_ENV === 'development') {
+      return;
+    }
+
     try {
       // Google AdSense 스크립트 로드 (실제 광고를 위해서는 AdSense 승인 후 발급받은 클라이언트 ID 필요)
-      if (typeof window !== 'undefined' && !(window as unknown as { adsbygoogle?: unknown }).adsbygoogle) {
+      if (
+        typeof window !== 'undefined' &&
+        !(window as unknown as { adsbygoogle?: unknown }).adsbygoogle
+      ) {
         const script = document.createElement('script');
         script.async = true;
         script.src =
@@ -30,10 +38,24 @@ export default function AdBanner({
 
         script.onload = () => {
           try {
-            const windowWithAdsense = window as unknown as { adsbygoogle: unknown[] };
-            (windowWithAdsense.adsbygoogle = windowWithAdsense.adsbygoogle || []).push({});
-          } catch {
-            console.log('AdSense not loaded yet');
+            const windowWithAdsense = window as unknown as {
+              adsbygoogle: unknown[];
+            };
+            (windowWithAdsense.adsbygoogle =
+              windowWithAdsense.adsbygoogle || []).push({});
+          } catch (error) {
+            // 개발 환경에서는 AdSense 오류를 무시
+            if (process.env.NODE_ENV === 'development') {
+              console.log('AdSense not loaded yet (development mode)');
+            } else {
+              console.error('AdSense loading error:', error);
+            }
+          }
+        };
+
+        script.onerror = () => {
+          if (process.env.NODE_ENV === 'development') {
+            console.log('AdSense script failed to load (development mode)');
           }
         };
       }
