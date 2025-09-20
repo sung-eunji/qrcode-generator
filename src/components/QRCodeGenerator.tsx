@@ -5,6 +5,7 @@ import QRCode from 'qrcode';
 
 interface QRCodeGeneratorProps {
   className?: string;
+  locale?: string;
 }
 
 type QRType = 'text' | 'url' | 'wifi' | 'contact' | 'sms' | 'email' | 'phone';
@@ -54,7 +55,76 @@ const randomMessages = [
 
 export default function QRCodeGenerator({
   className = '',
+  locale = 'ko',
 }: QRCodeGeneratorProps) {
+  // 다국어 텍스트 정의
+  const translations = {
+    ko: {
+      title: "QR코드 생성기 ✨",
+      selectType: "QR 코드 타입을 선택해주세요!💕",
+      types: {
+        text: "📝텍스트",
+        url: "🌐URL", 
+        wifi: "📶WiFi",
+        contact: "👤연락처",
+        sms: "💬SMS",
+        email: "📧이메일",
+        phone: "📞전화"
+      },
+      inputPlaceholder: "💕 특별한 메시지를 입력하세요",
+      randomMessage: "🎲랜덤 메시지",
+      example: "예: 안녕하세요! 오늘도 좋은 하루 되세요! 💕",
+      generateButton: "QR 코드 생성하기! 🎀",
+      generating: "생성 중...",
+      wifiPlaceholder: "WiFi 정보를 입력하세요",
+      contactPlaceholder: "연락처 정보를 입력하세요",
+      urlPlaceholder: "🌐 URL을 입력하세요"
+    },
+    en: {
+      title: "QR Code Generator ✨",
+      selectType: "Please select QR code type!💕",
+      types: {
+        text: "📝Text",
+        url: "🌐URL",
+        wifi: "📶WiFi", 
+        contact: "👤Contact",
+        sms: "💬SMS",
+        email: "📧Email",
+        phone: "📞Phone"
+      },
+      inputPlaceholder: "💕 Enter your special message",
+      randomMessage: "🎲Random Message",
+      example: "e.g: Hello! Have a great day today! 💕",
+      generateButton: "Generate QR Code! 🎀",
+      generating: "Generating...",
+      wifiPlaceholder: "Enter WiFi information",
+      contactPlaceholder: "Enter contact information", 
+      urlPlaceholder: "🌐 Enter URL"
+    },
+    fr: {
+      title: "Générateur QR Code ✨",
+      selectType: "Veuillez sélectionner le type de QR code!💕",
+      types: {
+        text: "📝Texte",
+        url: "🌐URL",
+        wifi: "📶WiFi",
+        contact: "👤Contact", 
+        sms: "💬SMS",
+        email: "📧Email",
+        phone: "📞Téléphone"
+      },
+      inputPlaceholder: "💕 Entrez votre message spécial",
+      randomMessage: "🎲Message Aléatoire",
+      example: "ex: Bonjour! Passez une excellente journée! 💕",
+      generateButton: "Générer QR Code! 🎀",
+      generating: "Génération...",
+      wifiPlaceholder: "Entrez les informations WiFi",
+      contactPlaceholder: "Entrez les informations de contact",
+      urlPlaceholder: "🌐 Entrez l'URL"
+    }
+  };
+  
+  const t = translations[locale as keyof typeof translations] || translations.ko;
   const [qrType, setQrType] = useState<QRType>('text');
   const [text, setText] = useState('');
   const [wifiData, setWifiData] = useState<WiFiData>({
@@ -219,13 +289,13 @@ export default function QRCodeGenerator({
   const getInputLabel = () => {
     switch (qrType) {
       case 'text':
-        return '💕 특별한 메시지를 입력하세요';
+        return t.inputPlaceholder;
       case 'url':
-        return '🌐 URL을 입력하세요';
+        return t.urlPlaceholder;
       case 'wifi':
-        return 'WiFi 정보를 입력하세요';
+        return t.wifiPlaceholder;
       case 'contact':
-        return '연락처 정보를 입력하세요';
+        return t.contactPlaceholder;
       case 'sms':
         return '전화번호를 입력하세요';
       case 'email':
@@ -240,7 +310,7 @@ export default function QRCodeGenerator({
   const getPlaceholder = () => {
     switch (qrType) {
       case 'text':
-        return '예: 안녕하세요! 오늘도 좋은 하루 되세요! 💕';
+        return t.example;
       case 'url':
         return 'https://example.com 🌸';
       case 'sms':
@@ -264,7 +334,7 @@ export default function QRCodeGenerator({
 
       <h1 className="text-4xl font-bold bg-gradient-to-r from-pink-500 via-purple-500 to-pink-600 bg-clip-text text-transparent mb-8 text-center relative">
         <span className="text-3xl mr-2">🎀</span>
-        QR코드 생성기 ✨
+        {t.title}
         <span className="text-3xl ml-2">✨</span>
       </h1>
 
@@ -273,18 +343,18 @@ export default function QRCodeGenerator({
         <div>
           <label className="block text-lg font-bold text-purple-700 mb-4 text-center">
             <span className="text-xl mr-2">🎯</span>
-            QR 코드 타입을 선택해주세요!
+            {t.selectType}
             <span className="text-xl ml-2">💕</span>
           </label>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {[
-              { type: 'text', label: '텍스트', icon: '📝' },
-              { type: 'url', label: 'URL', icon: '🌐' },
-              { type: 'wifi', label: 'WiFi', icon: '📶' },
-              { type: 'contact', label: '연락처', icon: '👤' },
-              { type: 'sms', label: 'SMS', icon: '💬' },
-              { type: 'email', label: '이메일', icon: '📧' },
-              { type: 'phone', label: '전화', icon: '📞' },
+              { type: 'text', key: 'text', icon: '📝' },
+              { type: 'url', key: 'url', icon: '🌐' },
+              { type: 'wifi', key: 'wifi', icon: '📶' },
+              { type: 'contact', key: 'contact', icon: '👤' },
+              { type: 'sms', key: 'sms', icon: '💬' },
+              { type: 'email', key: 'email', icon: '📧' },
+              { type: 'phone', key: 'phone', icon: '📞' },
             ].map((option) => (
               <button
                 key={option.type}
@@ -296,7 +366,7 @@ export default function QRCodeGenerator({
                 }`}
               >
                 <span className="text-lg mr-1">{option.icon}</span>
-                {option.label}
+                {t.types[option.key as keyof typeof t.types]}
               </button>
             ))}
           </div>
@@ -448,7 +518,7 @@ export default function QRCodeGenerator({
                     className="bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500 text-white text-xs font-bold py-2 px-3 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-md"
                   >
                     <span className="text-sm mr-1">🎲</span>
-                    랜덤 메시지
+                    {t.randomMessage}
                   </button>
                 )}
               </div>
@@ -472,12 +542,12 @@ export default function QRCodeGenerator({
               {isGenerating ? (
                 <>
                   <span className="text-lg mr-2">⏳</span>
-                  생성 중...
+                  {t.generating}
                 </>
               ) : (
                 <>
                   <span className="text-lg mr-2">✨</span>
-                  QR 코드 생성하기! 🎀
+                  {t.generateButton}
                 </>
               )}
             </button>

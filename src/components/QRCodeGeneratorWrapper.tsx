@@ -2,6 +2,10 @@
 
 import dynamic from 'next/dynamic';
 
+interface QRCodeGeneratorWrapperProps {
+  locale?: string;
+}
+
 const QRCodeGenerator = dynamic(() => import('./QRCodeGenerator'), {
   ssr: false,
   loading: () => (
@@ -12,4 +16,6 @@ const QRCodeGenerator = dynamic(() => import('./QRCodeGenerator'), {
   ),
 });
 
-export default QRCodeGenerator;
+export default function QRCodeGeneratorWrapper({ locale = 'ko' }: QRCodeGeneratorWrapperProps) {
+  return <QRCodeGenerator locale={locale} />;
+}

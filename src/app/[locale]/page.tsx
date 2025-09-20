@@ -201,7 +201,7 @@ export default async function Home({ params }: HomeProps) {
 
         {/* 메인 QR코드 생성기 */}
         <div className="mb-12">
-          <QRCodeGeneratorWrapper />
+          <QRCodeGeneratorWrapper locale={locale} />
         </div>
 
         {/* 유틸리티 카테고리 */}
