@@ -196,7 +196,7 @@ export default function QRCodeGenerator({
           // 텍스트 메시지인 경우 메시지 표시 페이지로 연결
           // 이중 인코딩을 방지하기 위해 안전하게 처리
           const encodedMessage = encodeURIComponent(text);
-          qrContent = `${getBaseUrl()}/message/${encodedMessage}`;
+          qrContent = `${getBaseUrl()}/${locale}/message/${encodedMessage}`;
 
           // URL 검증
           try {
@@ -305,7 +305,9 @@ export default function QRCodeGenerator({
 
   const copyUrlToClipboard = () => {
     if (qrType === 'text' && text.trim()) {
-      const url = `${getBaseUrl()}/message/${encodeURIComponent(text)}`;
+      const url = `${getBaseUrl()}/${locale}/message/${encodeURIComponent(
+        text
+      )}`;
       navigator.clipboard
         .writeText(url)
         .then(() => {
@@ -676,7 +678,7 @@ export default function QRCodeGenerator({
                         <span className="text-lg mr-2">🔗</span>
                         연결 URL:{' '}
                         <span className="font-mono bg-gradient-to-r from-pink-100 to-purple-100 px-3 py-1 rounded-lg text-purple-800 text-xs break-all">
-                          {`${getBaseUrl()}/message/${encodeURIComponent(
+                          {`${getBaseUrl()}/${locale}/message/${encodeURIComponent(
                             text
                           )}`}
                         </span>

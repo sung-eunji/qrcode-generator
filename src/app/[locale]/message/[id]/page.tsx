@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import MessageUrlNormalizer from './MessageUrlNormalizer';
 
 interface MessagePageProps {
   params: Promise<{
@@ -22,6 +23,7 @@ export default async function MessagePage({ params }: MessagePageProps) {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-100 via-purple-50 to-blue-100 flex items-center justify-center p-4 relative overflow-hidden">
+      <MessageUrlNormalizer locale={locale} id={message} />
       {/* 카와이한 배경 장식들 */}
       <div className="absolute top-10 left-10 text-6xl animate-bounce">🌸</div>
       <div className="absolute top-20 right-20 text-4xl animate-pulse">💖</div>
